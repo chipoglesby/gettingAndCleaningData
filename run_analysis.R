@@ -1,4 +1,5 @@
 library(dplyr)
+library(tidyr)
 
 # Features Data
 featuresData <- read.table("data/features.txt", stringsAsFactors = FALSE)
@@ -48,6 +49,6 @@ finalData <- msData %>% mutate(obs = 1:nrow(msData)) %>%
   separate(var, c("feature", "metric")) %>%
   spread(metric, value) %>%
   group_by(activity, subject, feature) %>%
-  mutate(groupedData, avg_mean = mean(mean),
+  mutate(avg_mean = mean(mean),
          avg_std = mean(std))
 write.table(finalData, file = "finalData.txt", row.name = FALSE)
