@@ -21,8 +21,10 @@ labelsData <- read.table("data/activity_labels.txt")
 # Merge data
 testSubjectName <- merge(yTestData, labelsData, by.x = "V1", by.y = "V1")
 trainSubjectName<- merge(yTrainData, labelsData, by.x = "V1", by.y = "V1")
-joinedTestData <- bind_cols(as.data.frame(testSubjectName$V2), as.data.frame(testSubjectData$V1), xTestData)
-joinedTrainData <- bind_cols(as.data.frame(trainSubjectName$V2), as.data.frame(trainSubjectData$V1), xTrainData)
+joinedTestData <- bind_cols(as.data.frame(testSubjectName$V2),
+                            as.data.frame(testSubjectData$V1), xTestData)
+joinedTrainData <- bind_cols(as.data.frame(trainSubjectName$V2), 
+                             as.data.frame(trainSubjectData$V1), xTrainData)
 
 # Giving columns names
 names(joinedTestData) <- c("activity", "subject", featuresData$V2)
@@ -32,7 +34,8 @@ names(joinedTrainData) <- c("activity", "subject", featuresData$V2)
 mergedData <- bind_rows(joinedTestData, joinedTrainData)
 
 # Subsetting mean and standard deivation columns only.
-msData <- mergedData[,c(1, 2, grep(".*mean\\(.*|.*std\\(.*", names(mergedData)))]
+msData <- mergedData[,c(1, 2, grep(".*mean\\(.*|.*std\\(.*", 
+                                   names(mergedData)))]
 
 # Tidying data set by removing hypens
 names(msData) <- gsub("-", "", names(msData))
