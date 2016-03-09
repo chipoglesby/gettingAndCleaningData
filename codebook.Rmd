@@ -3,14 +3,50 @@ title: "Codebook"
 ---
 
 This is the codebook for the [Getting and Cleaning data class on Coursera.](https://www.coursera.org/learn/data-cleaning/)
-```{r}
-head(finalData,5)
+Codebook
+========
+
+Variable list and descriptions
+------------------------------
+
+Variable name    | Description
+-----------------|------------
+subject          | ID the subject who performed the activity for each window sample. Its range is from 1 to 30.
+activity         | Activity name
+featDomain       | Feature: Time domain signal or frequency domain signal (Time or Freq)
+featInstrument   | Feature: Measuring instrument (Accelerometer or Gyroscope)
+featAcceleration | Feature: Acceleration signal (Body or Gravity)
+featVariable     | Feature: Variable (Mean or SD)
+featJerk         | Feature: Jerk signal
+featMagnitude    | Feature: Magnitude of the signals calculated using the Euclidean norm
+featAxis         | Feature: 3-axial signals in the X, Y and Z directions (X, Y, or Z)
+featCount        | Feature: Count of data points used to compute `average`
+featAverage      | Feature: Average of each variable for each activity and each subject
+
+Dataset structure
+-----------------
+
+
+```r
+str(finalData)
 ```
 
-You can also embed plots, for example:
+`r str(finalData)`
 
-```{r, echo=FALSE}
-plot(cars)
+Show some rows of the dataset
+------------------------------
+
+```r
+head(finalData)
 ```
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+`r knitr::kable(head(finalData,5))`
+
+Summary of variables
+--------------------
+
+```r
+summary(finalData)
+```
+
+`r knitr::kable(summary(finalData))`

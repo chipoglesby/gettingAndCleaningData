@@ -3,82 +3,69 @@ title: "Codebook"
 ---
 
 This is the codebook for the [Getting and Cleaning data class on Coursera.](https://www.coursera.org/learn/data-cleaning/)
+Codebook
+========
+
+Variable list and descriptions
+------------------------------
+
+Variable name    | Description
+-----------------|------------
+subject          | ID the subject who performed the activity for each window sample. Its range is from 1 to 30.
+activity         | Activity name
+featDomain       | Feature: Time domain signal or frequency domain signal (Time or Freq)
+featInstrument   | Feature: Measuring instrument (Accelerometer or Gyroscope)
+featAcceleration | Feature: Acceleration signal (Body or Gravity)
+featVariable     | Feature: Variable (Mean or SD)
+featJerk         | Feature: Jerk signal
+featMagnitude    | Feature: Magnitude of the signals calculated using the Euclidean norm
+featAxis         | Feature: 3-axial signals in the X, Y and Z directions (X, Y, or Z)
+featCount        | Feature: Count of data points used to compute `average`
+featAverage      | Feature: Average of each variable for each activity and each subject
+
+Dataset structure
+-----------------
+
 
 ```r
-head(finalData,5)
+str(finalData)
 ```
 
+
+
+Show some rows of the dataset
+------------------------------
+
+```r
+head(finalData)
 ```
-## Source: local data frame [5 x 8]
-## Groups: activity, subject, feature [5]
-## 
-##   activity subject   obs       feature       mean        std   avg_mean
-##     (fctr)   (int) (int)         (chr)      (dbl)      (dbl)      (dbl)
-## 1   LAYING      20  2411 fBodyAccJerkX -0.9926227 -0.9951256 -0.6245233
-## 2   LAYING      20  2411 fBodyAccJerkY -0.9832903 -0.9862617 -0.4669961
-## 3   LAYING      20  2411 fBodyAccJerkZ -0.9872368 -0.9898161 -0.7307666
-## 4   LAYING      20  2411   fBodyAccMag -0.9856195 -0.9865645 -0.5054934
-## 5   LAYING      20  2411     fBodyAccX -0.9927046 -0.9946814 -0.5706379
-## Variables not shown: avg_std (dbl)
+
+
+
+|activity | subject|  obs|feature       |       mean|        std|   avg_mean|    avg_std|
+|:--------|-------:|----:|:-------------|----------:|----------:|----------:|----------:|
+|LAYING   |      20| 2411|fBodyAccJerkX | -0.9926227| -0.9951256| -0.6245233| -0.5841110|
+|LAYING   |      20| 2411|fBodyAccJerkY | -0.9832903| -0.9862617| -0.4669961| -0.4204023|
+|LAYING   |      20| 2411|fBodyAccJerkZ | -0.9872368| -0.9898161| -0.7307666| -0.7457329|
+|LAYING   |      20| 2411|fBodyAccMag   | -0.9856195| -0.9865645| -0.5054934| -0.6042226|
+|LAYING   |      20| 2411|fBodyAccX     | -0.9927046| -0.9946814| -0.5706379| -0.5385612|
+
+
+
+Summary of variables
+--------------------
+
+```r
+summary(finalData)
 ```
-We can summarize the data by using:
 
-Feature Selection 
-=================
 
-The features selected for this database come from the accelerometer and gyroscope 3-axial raw signals tAcc-XYZ and tGyro-XYZ. These time domain signals (prefix 't' to denote time) were captured at a constant rate of 50 Hz. Then they were filtered using a median filter and a 3rd order low pass Butterworth filter with a corner frequency of 20 Hz to remove noise. Similarly, the acceleration signal was then separated into body and gravity acceleration signals (tBodyAcc-XYZ and tGravityAcc-XYZ) using another low pass Butterworth filter with a corner frequency of 0.3 Hz. 
 
-Subsequently, the body linear acceleration and angular velocity were derived in time to obtain Jerk signals (tBodyAccJerk-XYZ and tBodyGyroJerk-XYZ). Also the magnitude of these three-dimensional signals were calculated using the Euclidean norm (tBodyAccMag, tGravityAccMag, tBodyAccJerkMag, tBodyGyroMag, tBodyGyroJerkMag). 
-
-Finally a Fast Fourier Transform (FFT) was applied to some of these signals producing fBodyAcc-XYZ, fBodyAccJerk-XYZ, fBodyGyro-XYZ, fBodyAccJerkMag, fBodyGyroMag, fBodyGyroJerkMag. (Note the 'f' to indicate frequency domain signals). 
-
-These signals were used to estimate variables of the feature vector for each pattern:  
-'-XYZ' is used to denote 3-axial signals in the X, Y and Z directions.
-
-tBodyAcc-XYZ
-tGravityAcc-XYZ
-tBodyAccJerk-XYZ
-tBodyGyro-XYZ
-tBodyGyroJerk-XYZ
-tBodyAccMag
-tGravityAccMag
-tBodyAccJerkMag
-tBodyGyroMag
-tBodyGyroJerkMag
-fBodyAcc-XYZ
-fBodyAccJerk-XYZ
-fBodyGyro-XYZ
-fBodyAccMag
-fBodyAccJerkMag
-fBodyGyroMag
-fBodyGyroJerkMag
-
-The set of variables that were estimated from these signals are: 
-
-mean(): Mean value
-std(): Standard deviation
-mad(): Median absolute deviation 
-max(): Largest value in array
-min(): Smallest value in array
-sma(): Signal magnitude area
-energy(): Energy measure. Sum of the squares divided by the number of values. 
-iqr(): Interquartile range 
-entropy(): Signal entropy
-arCoeff(): Autorregresion coefficients with Burg order equal to 4
-correlation(): correlation coefficient between two signals
-maxInds(): index of the frequency component with largest magnitude
-meanFreq(): Weighted average of the frequency components to obtain a mean frequency
-skewness(): skewness of the frequency domain signal 
-kurtosis(): kurtosis of the frequency domain signal 
-bandsEnergy(): Energy of a frequency interval within the 64 bins of the FFT of each window.
-angle(): Angle between to vectors.
-
-Additional vectors obtained by averaging the signals in a signal window sample. These are used on the angle() variable:
-
-gravityMean
-tBodyAccMean
-tBodyAccJerkMean
-tBodyGyroMean
-tBodyGyroJerkMean
-
-The complete list of variables of each feature vector is available in 'features.txt'
+|   |              activity   |   subject    |     obs      |  feature        |     mean         |     std        |   avg_mean      |   avg_std      |
+|:--|:------------------------|:-------------|:-------------|:----------------|:-----------------|:---------------|:----------------|:---------------|
+|   |LAYING            :64152 |Min.   : 1.00 |Min.   :    1 |Length:339867    |Min.   :-1.000000 |Min.   :-1.0000 |Min.   :-0.99458 |Min.   :-0.9957 |
+|   |SITTING           :58641 |1st Qu.: 9.00 |1st Qu.: 2575 |Class :character |1st Qu.:-0.946387 |1st Qu.:-0.9878 |1st Qu.:-0.65996 |1st Qu.:-0.7785 |
+|   |STANDING          :62898 |Median :17.00 |Median : 5150 |Mode  :character |Median :-0.196629 |Median :-0.9371 |Median :-0.49591 |Median :-0.6828 |
+|   |WALKING           :56826 |Mean   :16.15 |Mean   : 5150 |NA               |Mean   :-0.330004 |Mean   :-0.6927 |Mean   :-0.33000 |Mean   :-0.6927 |
+|   |WALKING_DOWNSTAIRS:46398 |3rd Qu.:24.00 |3rd Qu.: 7725 |NA               |3rd Qu.:-0.007234 |3rd Qu.:-0.4120 |3rd Qu.:-0.01786 |3rd Qu.:-0.6058 |
+|   |WALKING_UPSTAIRS  :50952 |Max.   :30.00 |Max.   :10299 |NA               |Max.   : 1.000000 |Max.   : 1.0000 |Max.   : 0.96258 |Max.   : 0.1215 |
