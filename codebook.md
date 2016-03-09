@@ -23,22 +23,9 @@ featAxis         | Feature: 3-axial signals in the X, Y and Z directions (X, Y, 
 featCount        | Feature: Count of data points used to compute `average`
 featAverage      | Feature: Average of each variable for each activity and each subject
 
-Dataset structure
------------------
 
-
-```r
-str(finalData)
-```
-
-
-
-Show some rows of the dataset
+Head of the dataset
 ------------------------------
-
-```r
-head(finalData)
-```
 
 
 
@@ -55,10 +42,6 @@ head(finalData)
 Summary of variables
 --------------------
 
-```r
-summary(finalData)
-```
-
 
 
 |   |              activity   |   subject    |     obs      |  feature        |     mean         |     std        |   avg_mean      |   avg_std      |
@@ -69,3 +52,5 @@ summary(finalData)
 |   |WALKING           :56826 |Mean   :16.15 |Mean   : 5150 |NA               |Mean   :-0.330004 |Mean   :-0.6927 |Mean   :-0.33000 |Mean   :-0.6927 |
 |   |WALKING_DOWNSTAIRS:46398 |3rd Qu.:24.00 |3rd Qu.: 7725 |NA               |3rd Qu.:-0.007234 |3rd Qu.:-0.4120 |3rd Qu.:-0.01786 |3rd Qu.:-0.6058 |
 |   |WALKING_UPSTAIRS  :50952 |Max.   :30.00 |Max.   :10299 |NA               |Max.   : 1.000000 |Max.   : 1.0000 |Max.   : 0.96258 |Max.   : 0.1215 |
+
+

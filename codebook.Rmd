@@ -23,30 +23,13 @@ featAxis         | Feature: 3-axial signals in the X, Y and Z directions (X, Y, 
 featCount        | Feature: Count of data points used to compute `average`
 featAverage      | Feature: Average of each variable for each activity and each subject
 
-Dataset structure
------------------
 
-
-```r
-str(finalData)
-```
-
-`r str(finalData)`
-
-Show some rows of the dataset
+Head of the dataset
 ------------------------------
-
-```r
-head(finalData)
-```
 
 `r knitr::kable(head(finalData,5))`
 
 Summary of variables
 --------------------
-
-```r
-summary(finalData)
-```
 
 `r knitr::kable(summary(finalData))`
